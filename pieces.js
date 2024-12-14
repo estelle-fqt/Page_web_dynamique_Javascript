@@ -42,3 +42,49 @@ for (let i = 0; i < pieces.length; i++) {
   pieceElement.appendChild(descriptionElement);
   pieceElement.appendChild(stockElement);
 }
+
+// Ordonner les fiches produits avec la fct sort
+const boutonTrier = document.querySelector(".btn-trier");
+
+boutonTrier.addEventListener("click", function () {
+  const piecesOrdonees = Array.from(pieces); // crée une copie ordonnée de la liste d'origine
+
+  // methode .sort
+  piecesOrdonees.sort(function (a, b) {
+    return a.prix - b.prix;
+  });
+  console.log(piecesOrdonees);
+});
+
+// Bouton "Filtrer les pièces non abordables"
+const boutonFiltrer = document.querySelector(".btn-filtrer");
+
+boutonFiltrer.addEventListener("click", function () {
+  // methode .filter
+  const piecesFiltrees = pieces.filter(function (piece) {
+    return piece.prix <= 35;
+  });
+  console.log(piecesFiltrees);
+});
+
+// Bouton "Trier par prix décroissant"
+const boutonPrixDecroissant = document.querySelector(".btn-decroissant");
+
+boutonPrixDecroissant.addEventListener("click", function () {
+  const piecesOrdonees = Array.from(pieces); // crée une copie décroissante de la liste d'origine
+
+  piecesOrdonees.sort(function (a, b) {
+    return b.prix - a.prix;
+  });
+  console.log(piecesOrdonees);
+});
+
+//Bouton "Filtrer les pièces sans description"
+const boutonSansDescription = document.querySelector(".btn-nodesc");
+
+boutonSansDescription.addEventListener("click", function () {
+  const piecesFiltrees = pieces.filter(function (piece) {
+    return piece.description;
+  });
+  console.log(piecesFiltrees);
+});
